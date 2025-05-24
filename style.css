@@ -1,133 +1,223 @@
-body {
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #2c3e50;
+    --accent-color: #e74c3c;
+    --background-color: #f5f6fa;
+    --text-color: #2c3e50;
+    --success-color: #2ecc71;
+    --warning-color: #f1c40f;
+    --border-radius: 12px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
     margin: 0;
     padding: 0;
-    background-color: #F8E8D1; /* Light Beige */
-    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 h1 {
-    font-size: 2rem;
-    color: #2C3E50; /* Dark Slate Blue */
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: var(--primary-color);
     text-align: center;
-    margin: 10px 20px;
-}
-
-input {
-    width: 20vw;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 10px;
-    border: 1px solid #2C3E50;
-    font: 1em sans-serif;
-}
-
-button {
-    background-color: navy; /* Royal Blue */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px 0;
-    cursor: pointer;
-    border-radius: 10px;
-    font: 1em sans-serif;
-    box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.3);
-    transition: 0.3s ease;
-}
-
-button:hover {
-    background-color: #FFD700; /* Gold */
-    color: navy;
-}
-
-button.circle {
-    border-radius: 50%;
-    width: 35px;
-    height: 35px;
-    font-size: 1.2em;
-    padding: 0;
-    margin: 5px;
-    background-color: #008080; /* Teal */
-    color: white;
-    line-height: 0;
+    margin: 20px 0;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#form {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 100%;
-}
-
-/* Tasks Table */
-.tasks-table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 80%;
-    min-height: 500px;
-    border: 2px solid #191970; /* Midnight Blue */
-    margin: 40px auto;
-    border-radius: 15px;
-    background-color: white;
+    background: white;
     padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 30px;
 }
 
-/* Tasks Header */
-.tasksHeader {
-    width: 100%;
-    border-radius: 13px;
-    border: 2px solid navy;
-    padding: 10px;
-    text-align: center;
-    background-color: #008B8B; /* Dark Cyan */
+input {
+    flex: 1;
+    min-width: 200px;
+    padding: 12px 15px;
+    border: 2px solid #e1e1e1;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+}
+
+button {
+    background-color: var(--primary-color);
     color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--box-shadow);
 }
 
-/* Task Cards */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#clear {
+    background-color: var(--accent-color);
+}
+
+.tasks-table {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+}
+
+.tasksHeader {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.tasksHeader h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin: 0;
+}
+
 .tasks {
-    width: 100%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 20px;
+    gap: 15px;
 }
 
-/* Individual Task */
 .task {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 90%;
-    background-color: #B0C4DE; /* Light Steel Blue */
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #2C3E50;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    transition: 0.3s ease;
-}
-.taskDone{
-    background-color: rgb(75, 240, 99);
-}
-.task:hover {
-    transform: scale(1.05);
+    padding: 15px 20px;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: var(--transition);
+    border: 1px solid #e1e1e1;
 }
 
-/* Task Buttons */
+.task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.taskDone {
+    background-color: rgba(46, 204, 113, 0.1);
+    border-color: var(--success-color);
+}
+
 .task div:last-child {
     display: flex;
-    gap: 5px;
+    gap: 10px;
 }
-.circle.delete{
-    background-color: rgb(255, 225, 0) !important;
+
+.circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1.2rem;
 }
-.circle.edit{
-    background-color: rgb(81, 81, 226) !important;
+
+.circle:hover {
+    transform: scale(1.1);
 }
-.circle.check{
-    background-color: rgb(19, 185, 19) !important;
+
+.circle.delete {
+    background-color: var(--accent-color);
 }
-.circle.close{
-    background-color: rgb(242, 29, 29) !important;
+
+.circle.edit {
+    background-color: var(--primary-color);
+}
+
+.circle.check {
+    background-color: var(--success-color);
+}
+
+.circle.close {
+    background-color: var(--accent-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    #form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .task {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .task div:last-child {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .circle {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
 }
